@@ -1,0 +1,73 @@
+---
+title: "PSET5BC"
+output: html_document
+date: "2023-11-06"
+---
+
+# Part B
+
+## Problem 1
+
+## ![Problem 1.](Lexis%20Diagram%20PSET5B-final.png) Problems 2-4:
+
+Calculations available in Excel.
+
+```{r}
+# Load the required libraries
+library(ggplot2)
+library(readxl)
+
+# Read the data from Excel files, specifying column names
+data1 <- read_excel("graph-pset5b.xlsx", col_names = TRUE, range = "A1:B21")
+data2 <- read_excel("graph-pset5b.xlsx", col_names = TRUE, range = "D1:E16")
+
+# Create a plot with custom x-axis
+plot <- ggplot() +
+  geom_line(data = data1, aes(x = `Mid-Period`, y = `Period TFR`, color = "Dataset 1")) +
+  geom_line(data = data2, aes(x = `Fertility Cohort`, y = `Cohort TFR`, color = "Dataset 2")) +
+  geom_point(data = data1, aes(x = `Mid-Period`, y = `Period TFR`), color = "blue", size = 2) +
+  geom_point(data = data2, aes(x = `Fertility Cohort`, y = `Cohort TFR`), color = "red", size = 2) +
+  labs(x = "Year", y = "TFR", color = "Dataset") +
+  scale_color_manual(values = c("Dataset 1" = "blue", "Dataset 2" = "red"), 
+                     labels = c("Period TFR", "Cohort TFR"))  # Add legend labels
+
+# Show the plot
+print(plot)
+
+```
+
+Looking at the period TFR, we see large fluctuations as a result of World War 1 and World War 2. World War 1 brought about a big dip for a single five-year time period, while World War 2 brought about a more gradual decrease in fertility. TFR recovered after each of these dips. Finally, toward the end of the 20th century, we see a decrease in TFR again.\
+
+Looking at the cohort TFR, this curve is much smoother. We see that the timing effects of World Wars 1 and 2 did not have as big an impact on the fertility levels achieved by women throughout their reproductive lifetimes. Women likely postponed births during the war, but eventually had those births later on, giving birth to the baby boomer generation. Finally, we see the dip in fertility at the end of the 20th century taking place as a cohort TFR decrease as well.
+
+Ultimately, the period TFR illustrates period-based changes in fertility, while the cohort TFR indicates a larger trend in fertility over the course of a century characterized by an increase in fertility among women growing up during war-time, and a decrease in cohort fertility among women born in the second half of the century.
+
+# Part C
+
+## Problem 1
+
+Total number of children birthed: 38015
+
+## Problem 2
+
+TFR using first method = 4.608437386.
+
+## Problem 3
+
+Parity progression ratio calculations for PPR(i,i+1) are in spreadsheet.
+
+PPR(0,1) refers to the proportion of women from age 45 to 49 in India in 1998-99 who had at least one live birth.
+
+PPR(1,2) refers to the proportion of women from age 45 to 49 in India in 1998-99 who had at least one live birth who went on to have at least one more live birth.
+
+## Problem 4
+
+Parity progression ratio calculations for PPR(0,i) are in spreadsheet. PPR(0,10) refers to the proportion of women from age 45 to 49 in India in 1998-99 who had at least ten live births.
+
+## Problem 5
+
+TFR using second (PPR) method = 4.608437386
+
+## Problem 6
+
+The mean parity of a cohort of women who have completed childbearing is equal to the cohort's TFR if reporting is accurate and there are no differentials in mortality or migration by parity (p. 104). This makes sense logically, as computing the TFR ultimately yields total births over number of women in both cohort TFR calculations and mean parity calculations.

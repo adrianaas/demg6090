@@ -1,0 +1,139 @@
+---
+title: "PSET2A"
+author: "Adriana Scanteianu"
+output:
+  html_document: default
+  pdf_document: default
+date: "2023-09-25"
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+PSET1 Q4
+
+4.  Geometric Growth
+
+$$r_j = j(\frac{N(t)}{N(0)}^{\frac{1}{jT}} -1)$$
+
+Compounded annually
+
+```{r}
+(331449281/308745538)^{1/10} - 1
+```
+
+Compounded monthly
+
+```{r}
+12*((331449281/308745538)^(1/(12*10)) - 1)
+```
+
+Compounded daily
+
+```{r}
+365*((331449281/308745538)^(1/(365*10)) - 1)
+```
+
+Compounded continuously - Approximating "Continuous" Using Geometric
+Formula
+
+```{r}
+1000000*((331449281/308745538)^(1/(1000000*10)) - 1)
+```
+
+Compounded continuously - Using Exponential Formula
+$$ r^* = \frac{ln(\frac{N(t))}{N(0))})}{t} = 0.007095736$$
+
+```{r}
+(log(331449281/308745538))/10
+```
+
+PSET2 Part One
+
+1)  Calculate the crude death rate in each population.
+
+$$CDR^{USA}: 0,0084625275213\\
+CDR^{Russia}: 0,0143868047557$$
+
+2)  Calculate age-specific death rates (ASDR) in each population.
+    Prepare a figure comparing ASDR's in these two populations (with age
+    in the X axis and ASDRs in the Y axis, using a logarithmic scale for
+    the Y axis).
+
+See Excel Sheet "Graph #2" for calculations
+
+![Graph2](C:%5CUsers%5Cadriana%5CPictures%5CGraph2.png)
+
+3)  Specify your assumption(s) for calculating person-years in (1) and
+    (2).
+
+Using the midpoint estimate for person-years assumes population growth
+is linear.
+
+4)  Calculate the proportionate age distribution in the U.S. and Russia.
+    Prepare a figure comparing proportionate age distributions in these
+    two populations (with age in the X axis and population proportions
+    in the Y axis). Merge the first two age groups (0, 1-4) into one
+    five-year age group (0-4), so that each age class in the graph has a
+    same width (5 years).
+
+See Excel Sheet "Graph #4 for calculations
+
+![Graph4](C:%5CUsers%5Cadriana%5CPictures%5CGraph4.png)
+
+5)  Verify numerically that the CDR in each country is also a weighted
+    average of ASDRs, where the weights are the population age
+    distribution.
+
+See Excel Sheet "CDR #5" compared to "CDR #1" for both U.S. and Russia
+-- the CDRs are the same.
+
+6)  Calculate the age-standardized crude death rate for the U.S., using
+    the Russian age distribution as a standard. How do you interpret the
+    difference between the CDR for Russia and the age-standardized CDR
+    for the U.S.?
+
+$$ASCDR^{\frac{USA}{Russia}}= 0,006453608814$$
+
+Since the Russian population has fewer old people proportionate to the
+total population than the U.S., the ASCDR for the U.S. using the Russian
+age distribution is an underestimate: in actuality, there are more
+people aged 65 and up in the U.S. population and that is where mortality
+rates are relatively high.
+
+7)  Suppose that you do not have the age distribution of deaths in
+    Russia, but only the total number of deaths. Calculate the
+    comparative mortality ratio for Russia vs. the U.S. Verify that your
+    result is equal to the ratio of the CDR for Russia calculated in (1)
+    to the aged-standardized CDR for the U.S. calculated in (6).
+    $$CMR: 2,22926507797905$$
+
+8)  Decompose the difference between crude death rates in the U.S. and
+    Russia into a component attributable to differences in age-specific
+    death rates and a component attributable to differences in age
+    composition. Interpret these components. Be sure that they add up to
+    the observed difference between the crude deaths rates for the two
+    countries.
+
+See Excel Sheet CDR #8 calculations.
+
+Consider $$CDR^{Russia} - CDR^{USA} = 0,005924277234405$$ Then,
+$$Effect^{Age}= -0,002531749473301\\
+Effect^{Mortality}= 0,008456026707706\\
+CDR^{Russia} - CDR^{USA} = Effect^{Age} + Effect^{Mortality} = 0,005924277234405$$
+
+9)  When standardizing CDRs in the US and Russia, would the choice of
+    the age standard affect the direction of the difference between
+    standardized rates? Why, or why not?
+
+See Excel Sheet "Last Question" for calculations.
+
+Despite the ASDR curves intersecting and the U.S. having a higher ASDR for a few age groups, these few age groups for which the U.S. ASDR exceeds that of Russia is not enough to change the direction of difference, as Russia still experiences a greater CDR than
+the U.S. regardless of choice of standardization for age. However, the
+gap is widened when using USA as the standard of age distribution.
